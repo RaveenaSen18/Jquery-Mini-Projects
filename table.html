@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AJAX Table with Reqres API</title>
+    
+</head>
+<body>
+
+    <h1>Users Information</h1>
+    <table id="users-table" border="1">
+        <thead>
+            <tr>
+                <th>Image</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Email</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Data will be appended here -->
+        </tbody>
+    </table>
+    <script src="JS/jquery.js"></script>
+
+    <script>
+        // script.js
+
+$(document).ready(function() {
+    // AJAX call to Reqres API
+    $.ajax({
+        url: 'https://reqres.in/api/users?page=1', // Reqres API URL
+        method: 'GET',
+        success: function(response) {
+            appendDataToTable(response.data); // 'data' holds the array of users
+        },
+        error: function() {
+            alert('Failed to fetch data from the server.');
+        }
+    });
+});
+
+function appendDataToTable(users) {
+    let tableBody = $('#users-table tbody');
+    tableBody.empty(); // Clear existing table data
+
+    users.forEach(function(user) {
+        let row = `<tr>
+            <td><img src="${user.avatar}" alt="User Image" width="50"></td>
+            <td>${user.first_name}</td>
+            <td>${user.last_name}</td>
+            <td>${user.email}</td>
+        </tr>`;
+        tableBody.append(row);
+    });
+}
+
+    </script>
+</body>
+</html>

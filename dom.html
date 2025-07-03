@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="container"></div>
+    <div id="removable">remove me</div>
+    <img id="myimage" src="flower.jpg" alt="old alt"/>
+    <button id="mybutton">click me</button>
+    <div id="parent">
+        <button class="child">cb1</button>
+        <button class="child">cb2</button>
+    </div>
+    <script src="JS/jquery.js"></script>
+    <!-- <script>
+//         // $(document).ready(function(){
+//         //     $("#parent").on('click','.child',function(){
+//         //         alert('a child button clicked');
+//         //     });
+//         // })
+// </script> -->
+<script>
+    $(document).ready(function(){
+        var newele=$('<p>this is jq</p>');
+        $('#container').append(newele);
+    })
+</script>
+</body>
+</html>
